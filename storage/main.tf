@@ -2,7 +2,7 @@
 # Azure Storage Account Module
 # Provisions a Storage Account with blob containers, lifecycle
 # policies, encryption, and network security.
-# Designed for: High Availability, Scalability, High Security
+# Designed for: High Availability, Scalability.
 #--------------------------------------------------------------
 
 resource "azurerm_storage_account" "this" {
@@ -103,13 +103,4 @@ resource "azurerm_storage_management_policy" "this" {
   }
 }
 
-#--------------------------------------------------------------
-# Customer-Managed Key Encryption (Security)
-#--------------------------------------------------------------
 
-resource "azurerm_storage_account_customer_managed_key" "this" {
-  count = var.encryption_key_vault_key_id != null ? 1 : 0
-
-  storage_account_id = azurerm_storage_account.this.id
-  key_vault_key_id   = var.encryption_key_vault_key_id
-}

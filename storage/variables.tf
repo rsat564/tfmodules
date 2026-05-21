@@ -123,11 +123,6 @@ variable "lifecycle_rules" {
   default = []
 }
 
-variable "encryption_key_vault_key_id" {
-  description = "Key Vault Key ID for customer-managed key encryption. If null, Microsoft-managed keys are used."
-  type        = string
-  default     = null
-}
 
 variable "tags" {
   description = "Tags to apply to all resources."
