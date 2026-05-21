@@ -3,16 +3,10 @@ name: "Module CI"
 
 on:
   pull_request:
-    branches: [main, develop]
-    paths:
-      - "**/*.tf"
-      - "**/*.tftest.hcl"
-      - ".github/workflows/module-ci.yml"
+    branches: [main]
+    
   push:
-    branches: [main, develop]
-    paths:
-      - "**/*.tf"
-      - "**/*.tftest.hcl"
+    branches: [main]
 
 permissions:
   contents: read
