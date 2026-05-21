@@ -100,12 +100,12 @@ variable "data_disks" {
   default = {}
 
   validation {
-    condition = alltrue([for k, v in var.data_disks : v.lun >= 0 && v.lun <= 63])
+    condition     = alltrue([for k, v in var.data_disks : v.lun >= 0 && v.lun <= 63])
     error_message = "LUN must be between 0 and 63."
   }
 
   validation {
-    condition = alltrue([for k, v in var.data_disks : v.disk_size_gb >= 1 && v.disk_size_gb <= 32767])
+    condition     = alltrue([for k, v in var.data_disks : v.disk_size_gb >= 1 && v.disk_size_gb <= 32767])
     error_message = "Disk size must be between 1 and 32767 GB."
   }
 }

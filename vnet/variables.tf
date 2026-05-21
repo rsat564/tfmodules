@@ -64,9 +64,9 @@ variable "subnets" {
     - private_link_service_network_policies_enabled: Enable/disable network policies for private link services
   EOT
   type = map(object({
-    address_prefixes                              = list(string)
-    service_endpoints                             = optional(list(string), [])
-    delegation                                    = optional(object({
+    address_prefixes  = list(string)
+    service_endpoints = optional(list(string), [])
+    delegation = optional(object({
       name = string
       service_delegation = object({
         name    = string

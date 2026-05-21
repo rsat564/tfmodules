@@ -3,11 +3,11 @@ provider "azurerm" {
 }
 
 variables {
-  name                = "sttest001abc"
-  resource_group_name = "rg-test-eastus-001"
-  location            = "eastus"
-  account_tier        = "Standard"
-  replication_type    = "ZRS"
+  name                  = "sttest001abc"
+  resource_group_name   = "rg-test-eastus-001"
+  location              = "eastus"
+  account_tier          = "Standard"
+  replication_type      = "ZRS"
   public_network_access = false
 
   containers = {

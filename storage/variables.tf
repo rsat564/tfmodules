@@ -110,10 +110,10 @@ variable "container_soft_delete_retention_days" {
 variable "lifecycle_rules" {
   description = "Lifecycle management rules for cost optimization at scale."
   type = list(object({
-    name         = string
-    enabled      = optional(bool, true)
-    prefix_match = optional(list(string), [])
-    blob_types   = optional(list(string), ["blockBlob"])
+    name                       = string
+    enabled                    = optional(bool, true)
+    prefix_match               = optional(list(string), [])
+    blob_types                 = optional(list(string), ["blockBlob"])
     tier_to_cool_after_days    = optional(number, null)
     tier_to_archive_after_days = optional(number, null)
     delete_after_days          = optional(number, null)
