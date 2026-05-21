@@ -108,6 +108,11 @@ jobs:
         run: terraform init -backend=false
         working-directory: ${{ matrix.module }}
       - name: Terraform Test
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
         run: terraform test -no-color
         working-directory: ${{ matrix.module }}
 
