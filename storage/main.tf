@@ -81,10 +81,17 @@ resource "azurerm_storage_management_policy" "this" {
       }
 
       actions {
-        base_blob {
-          tier_to_cool_after_days_since_last_access_time_greater_than    = rule.value.tier_to_cool_after_days
-          tier_to_archive_after_days_since_last_access_time_greater_than = rule.value.tier_to_archive_after_days
-          delete_after_days_since_last_access_time_greater_than          = rule.value.delete_after_days
+        dynamic "base_blob" {
+          for_each = (
+            rule.value.tier_to_cool_after_days != null ||
+            rule.value.tier_to_archive_after_days != null ||
+            rule.value.delete_after_days != null
+          ) ? [1] : []
+          content {
+            tier_to_cool_after_days_since_modification_greater_than    = rule.value.tier_to_cool_after_days
+            tier_to_archive_after_days_since_modification_greater_than = rule.value.tier_to_archive_after_days
+            delete_after_days_since_modification_greater_than          = rule.value.delete_after_days
+          }
         }
         dynamic "snapshot" {
           for_each = rule.value.snapshot_delete_after_days != null ? [1] : []
